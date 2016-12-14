@@ -16,6 +16,7 @@ def list_arguments(arg1, arg2='defaultB', *args, **kwargs):
 
 
 if __name__ == '__main__':
+    print('start parsing:')
     list_arguments('one', 3, 'python', 'shell', name='landers', project='rubicon')
 
     tupleA = ('python', 'shell')
