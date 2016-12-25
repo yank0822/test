@@ -1,0 +1,6 @@
+pods:
+  - pod001
+  - pod002
+services:
+  - service001
+  - service002
