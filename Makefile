@@ -1,6 +1,11 @@
 NOSEARGS ?=
 DOCKER_TAG ?= latest
 
+VERSION := $(BUILD_NUMBER)
+IMAGE_VERSION := v0.$(VERSION)
+
+version:
+	@echo "$(IMAGE_VERSION)"
 
 flake8:
 	flake8 --max-line-length=120 *.py
@@ -24,6 +29,8 @@ clean:
 docker-image:
 	docker build -t localhost:5000/testweb:$(DOCKER_TAG) .
 	docker push localhost:5000/testweb:$(DOCKER_TAG)
+	docker tag localhost:5000/testweb:$(DOCKER_TAG) localhost:5000/testweb:$(IMAGE_VERSION)
+	docker push localhost:5000/testweb:$(IMAGE_VERSION)
 
 docker-run:
 	docker run -it -P --rm --name testweb localhost:5000/testweb
