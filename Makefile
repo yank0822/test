@@ -10,10 +10,11 @@ version:
 flake8:
 	flake8 --max-line-length=120 *.py
 
-start: flake8
+start: env flake8
 	nohup python web.py &
 
 test: start
+	. env/bin/activate
 	nosetests -vs $(NOSEARGS)
 
 env: requirements.txt
